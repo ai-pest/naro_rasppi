@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  app:
+    image: api
+    build:
+      context: ./
+      dockerfile: ./build/Dockerfile
+    volumes:
+      - type: bind
+        source: ./debug
+        target: /var/www/maff_ai/debug
+      - type: bind
+        source: ./htdocs
+        target: /var/www/maff_ai/htdocs
+      - type: bind
+        source: ./log
+        target: /var/www/maff_ai/log
+      - type: bind
+        source: ./src
+        target: /var/www/maff_ai/src
+    ports:
+      - "80:80"
+    user: "0:1000"
+

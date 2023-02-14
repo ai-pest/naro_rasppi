@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  # クロスプラットフォーム版 Web アプリ
+  # （ビルドのみ実行 - 時間がかかるので、サーバ起動から分離した）
+  webapp_xplat_build:
+    image: webapp_xplat_build
+    user: 1000:1000
+    build:
+      context: ./webapp_xplat
+      dockerfile: ./Dockerfile-build
+    volumes:
+      - type: bind
+        source: ./webapp_xplat/dist
+        target: /opt/webapp/web-build
+

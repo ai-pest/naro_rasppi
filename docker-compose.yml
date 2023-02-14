@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  # Web API と診断AI
+  api:
+    image: api
+    build:
+      context: ./ai
+      dockerfile: ./build/Dockerfile
+    expose:
+      - "80"
+    restart: always
+
+  # 簡易 Web UI
+  webui:
+    image: webui
+    build:
+      context: ./webui
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+
+  # クロスプラットフォーム版 Web アプリ
+  webapp_xplat:
+    image: webapp_xplat
+    build:
+      context: ./webapp_xplat
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - type: bind
+        source: ./webapp_xplat/dist
+        target: /usr/local/apache2/htdocs
+

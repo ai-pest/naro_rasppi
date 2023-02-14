@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>病虫害AI 簡易識別装置</title>
+  <link rel="stylesheet" href="css/file_type_style.css" type="text/css">
+  <link rel="stylesheet" href="css/jquery/jquery-ui-1.9.2.custom.min.css" type="text/css">
+  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+</head>
+
+<body>
+  <h2>
+    病虫害AI 簡易識別装置
+  </h2>
+  <div>
+    病虫害画像をアップロードしてください。
+  </div>
+  <form method="post" class="upload_form" action="" id="fileForm" enctype="multipart/form-data">
+    <div>
+      作物:
+      <select name="plant" id="plant">
+        <option value="">--作物を選んでください--</option>
+        <option value="トマト">トマト</option>
+        <option value="イチゴ">イチゴ</option>
+        <option value="キュウリ">キュウリ</option>
+        <option value="ナス">ナス</option>
+        <!--
+        <option value="無効">無効（デバッグ用）</option>
+        <option value="">空（デバッグ用）</option>
+        -->
+      </select>
+    </div>
+    <div>
+      部位:
+      <select name="part" id="part">
+        <option value="">--部位を選んでください--</option>
+        <option value="葉">葉</option>
+        <option value="果実">果実</option>
+        <option value="花">花</option>
+        <!--
+        <option value="無効">無効（デバッグ用）</option>
+        <option value="">空（デバッグ用）</option>
+        -->
+      </select>
+    </div>
+    <div>
+      病虫害の種別:
+      <select name="category" id="category">
+        <option value="">病害・虫害横断診断</option>
+        <option value="病害">病害</option>
+        <option value="虫害">虫害</option>
+        <!--
+        <option value="無効">無効（デバッグ用）</option>
+        -->
+      </select>
+    </div>
+    <div>
+      画像:
+      <input type="file" class="" name="uploadfile" id="uploadfile" accept="image/*" onchange="encode();">
+    </div>
+    <div style="margin: 10;">
+      <input type="button" id="uploadSubmit" class="btn" value="アップロード">
+    </div>
+  </form>
+  <!-- 診断結果テーブル -->
+  <div id="result"></div>
+  <script type="text/javascript" src="/index.js"></script>
+</body>
+
+</html>
